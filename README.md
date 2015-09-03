@@ -17,7 +17,7 @@ int main(int argc, char** argv){
 	LowPassFilter lpf(1.0, 0.01);
 	//Cycles 500 times. With the lpf deltaTime set to 0.01 it will simulate 5 seconds of run time
 	for(int i = 0; i < 500; i++){
-		cout << lpf.update(1.0) << endl;
+		cout << lpf.update(1.0) << endl; //Update with 1.0 as input value.
 	}
 	return 1;
 }
@@ -38,7 +38,7 @@ int main(int argc, char** argv){
 		float cycleTime = 0.01 + (0.002 * sin((float)i * 0.05));
 		cout << 
 			"cycleTime = " << cycleTime << 
-			",\t Output = " << lpf.update(1.0, cycleTime) << 
+			",\t Output = " << lpf.update(1.0, cycleTime) << //Update with 1.0 as input value and the current cycle time as deltaTime.
 			endl;
 	}
 	return 1;
