@@ -2,15 +2,15 @@
 #ifndef _LowPassFilter_hpp_
 #define _LowPassFilter_hpp_
 
+#include <iostream>
 #include <cmath>
 
 class LowPassFilter{
 public:
 	//constructors
-	LowPassFilter(int iOrder, float iCutOffFrequency);
-	LowPassFilter(int iOrder, float iCutOffFrequency, float iDeltaTime);
-	//variables
-	int Order;
+	LowPassFilter();
+	LowPassFilter(float iCutOffFrequency);
+	LowPassFilter(float iCutOffFrequency, float iDeltaTime);
 	//functions
 	float update(float input);
 	float update(float input, float deltaTime);
@@ -22,7 +22,7 @@ public:
 private:
 	float output;
 	float cutOffFrequency;
-	static float ePow;
+	float ePow;
 };
 
 #endif //_LowPassFilter_hpp_

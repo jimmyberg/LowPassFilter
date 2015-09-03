@@ -1,15 +1,19 @@
 
 #include "LowPassFilter.hpp"
 
-LowPassFilter::LowPassFilter(int iOrder, float iCutOffFrequency): 
-	cutOffFrequency(iCutOffFrequency), 
-	Order(iOrder),
+LowPassFilter::LowPassFilter():
+	output(0), 
+	cutOffFrequency(0){}
+
+LowPassFilter::LowPassFilter(float iCutOffFrequency):
+	output(0), 
+	cutOffFrequency(iCutOffFrequency),
 	ePow(0){}
 
-LowPassFilter::LowPassFilter(int iOrder, float iCutOffFrequency, float iDeltaTime): 
-	cutOffFrequency(iCutOffFrequency), 
-	Order(iOrder),
-	ePow(1-exp(-iDeltaTime * cutOffFrequency)){}
+LowPassFilter::LowPassFilter(float iCutOffFrequency, float iDeltaTime):
+	output(0), 
+	cutOffFrequency(iCutOffFrequency),
+	ePow(1-exp(-iDeltaTime * iCutOffFrequency)){}
 
 float LowPassFilter::update(float input){
 	return output += (input - output) * ePow;
@@ -17,7 +21,7 @@ float LowPassFilter::update(float input){
 
 float LowPassFilter::update(float input, float deltaTime){
 	setDeltaTime(deltaTime); //Changes ePow accordingly.
-	return output += (input - output) * ePow);
+	return output += (input - output) * ePow;
 }
 
 float LowPassFilter::getOutput(){
@@ -34,7 +38,7 @@ void LowPassFilter::setCutOffFrequency(float input){
 	}
 	else{
 		cutOffFrequency = 0;
-		cout << "Warning: A LowPassFilter instance has been configured with 0 Hz as cut-off frequency.";
+		std::cout << "Warning: A LowPassFilter instance has been configured with 0 Hz as cut-off frequency.";
 	}
 }
 
@@ -44,6 +48,6 @@ void LowPassFilter::setDeltaTime(float deltaTime){
 	}
 	else{
 		ePow = 0;
-		cout << "Warning: A LowPassFilter instance has been configured with 0 s as delta time.";
+		std::cout << "Warning: A LowPassFilter instance has been configured with 0 s as delta time.";
 	}
 }
