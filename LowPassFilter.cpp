@@ -1,5 +1,5 @@
 
-#include "LowPassFilter.h"
+#include "LowPassFilter.hpp"
 
 LowPassFilter::LowPassFilter(int iOrder, float iCutOffFrequency): 
 	cutOffFrequency(iCutOffFrequency), 
