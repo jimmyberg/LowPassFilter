@@ -33,14 +33,14 @@ using namespace std;
 #include <cmath> //Used for the sin() function.
 
 int main(int argc, char** argv){
-	//Create a low pass filter with 1 * 2 * pi Hz cuttoff freqency. DetltaTime for each cycle is unknown and will vary.
-	LowPassFilter lpf(1.0);
+	//Create a low pass filter. DetltaTime for each cycle is unknown and will vary.
+	LowPassFilter lpf;
 	//Cycles 500 times. cycle time will be about 0.01 seconds so this code will simulate a 5 seconds of run time.
 	for(int i = 0; i < 500; i++){
 		float cycleTime = 0.01 + (0.002 * sin((float)i * 0.05));
-		cout << 
-			"cycleTime = " << cycleTime << 
-			",\t Output = " << lpf.update(1.0, cycleTime) << //Update with 1.0 as input value and the current cycle time as deltaTime.
+		cout <<
+			"cycleTime = " << cycleTime <<
+			",\t Output = " << lpf.update(1.0, cycleTime, 2) << //Update with 1.0 as input value, the current cycle time as deltaTime and 2 Hz cutoff frequency.
 			endl;
 	}
 	return 1;
