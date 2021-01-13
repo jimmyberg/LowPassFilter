@@ -5,7 +5,7 @@ It can be used in applications where the cycletime will be constant and where it
 The cycletime setting can also be canged on the fly.
 Note that using with dynamic cycle time is much slower becouse e^(cutOffFrequency * deltaTime) has to be calculated over and over again.
 ## Note
-There is now a more advanced library containing higher order filters see https://github.com/overlord1123/DigitalFilters.
+There is now a more advanced library containing higher order filters see https://github.com/jimmyberg/DigitalFilters.
 
 ## Example with static cycle time
 
