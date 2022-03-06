@@ -11,7 +11,7 @@ There is now a more advanced library containing higher order filters see https:/
 
 ```c++
 #include <iostream>
-#include "LowPassFilter.hpp"
+#include "LowPassFilter.cpp"
 using namespace std;
 
 int main(int argc, char** argv){
@@ -27,7 +27,7 @@ int main(int argc, char** argv){
 ## Example with dynamic cycle time
 ```c++
 #include <iostream>
-#include "LowPassFilter.hpp"
+#include "LowPassFilter.cpp"
 using namespace std;
 
 #include <cmath> //Used for the sin() function.
